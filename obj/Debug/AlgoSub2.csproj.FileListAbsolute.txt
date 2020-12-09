@@ -1,0 +1,10 @@
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\bin\Debug\AlgoSub2.exe.config
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\bin\Debug\AlgoSub2.exe
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\bin\Debug\AlgoSub2.pdb
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.csprojAssemblyReference.cache
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.Form1.resources
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.Properties.Resources.resources
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.csproj.GenerateResource.cache
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.csproj.CoreCompileInputs.cache
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.exe
+C:\Users\JS\Desktop\Coding\c#\AlgoSub2\AlgoSub2\obj\Debug\AlgoSub2.pdb
