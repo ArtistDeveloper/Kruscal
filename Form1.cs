@@ -13,7 +13,8 @@ namespace AlgoSub2
 {
     public partial class Form1 : Form
     {
-        int nodevalue = 0;
+        int nodeValue = 0;
+        List<Node> nodeList = new List<Node>();
 
         public Form1()
         {
@@ -36,40 +37,25 @@ namespace AlgoSub2
 
         }
 
-        private void BgClick(object sender, EventArgs e)
-        {
-            DrawNode();
-        }
-
         public Point GetNodePoint()
         {
             Point nodePoint = PointToClient(new Point(Control.MousePosition.X, Control.MousePosition.Y));
             return nodePoint;
         }
 
-        public void DrawNode()
+        private void BgClick(object sender, EventArgs e)
         {
-            Point nodePoint = GetNodePoint();
-            Graphics nodeGraphic = CreateGraphics();
-            Pen p = new Pen(Color.Green, 2);
+            Node node = new Node(nodeValue, GetNodePoint(), CreateGraphics());
+            nodeList.Add(node);
+            nodeValue++;
+            node.DrawNode();
 
-            Rectangle rec = new Rectangle(nodePoint.X, nodePoint.Y, 50, 50);
-            nodeGraphic.DrawEllipse(p, rec);
-            DrawNodeValue();
-        }
-
-        public void DrawNodeValue()
-        {
-            Graphics valueGraphics = CreateGraphics();
-            Point nodePoint = GetNodePoint();
-
-            Font drawFont = new Font("Arial", 16);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
-            String drawNodeValue = Convert.ToString(nodevalue);
-            nodevalue++;
-
-            valueGraphics.DrawString(drawNodeValue, drawFont, drawBrush, nodePoint.X+15, nodePoint.Y+15);
-            
+            //좌표값 살아있는 테스트
+            for (int i = 0; i < nodeValue; i++)
+            {
+                Console.WriteLine("{0}", nodeList[i].GetNodePoint());
+            }
+            Console.WriteLine();
         }
     }
 }
