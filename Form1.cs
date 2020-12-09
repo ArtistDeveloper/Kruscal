@@ -13,8 +13,12 @@ namespace AlgoSub2
 {
     public partial class Form1 : Form
     {
-        int nodeValue = 0;
+        int flag;
+        int toNodeSelect;
+        int fromNodeSelect;
+        int nodeNum = 0;
         List<Node> nodeList = new List<Node>();
+        List<Edge> edgeList = new List<Edge>();
 
         public Form1()
         {
@@ -29,12 +33,18 @@ namespace AlgoSub2
 
         private void StartBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            fromNodeSelect = startBox.SelectedIndex;
+            //flag = 1;
         }
 
+        //Dest에서 Edge를 생성하기. StartBox에서는 단순히 선택한 노드만 저장하기.
         private void DestBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            toNodeSelect = destBox.SelectedIndex;
+            Edge edge = new Edge(nodeList[fromNodeSelect], nodeList[toNodeSelect], CreateGraphics());
+            edgeList.Add(edge);
+            edge.DrawEdge();
+            //flag = 0;
         }
 
         public Point GetNodePoint()
@@ -45,18 +55,30 @@ namespace AlgoSub2
 
         private void BgClick(object sender, EventArgs e)
         {
-            Node node = new Node(nodeValue, GetNodePoint(), CreateGraphics());
+            
+            Node node = new Node(nodeNum, GetNodePoint(), CreateGraphics());
             nodeList.Add(node);
-            nodeValue++;
+            ComboBoxRefresh();
+            nodeNum++;
             node.DrawNode();
 
-            //좌표값 살아있는 테스트
-            for (int i = 0; i < nodeValue; i++)
+            //좌표값 테스트
+            for (int i = 0; i < nodeNum; i++)
             {
-                Console.WriteLine("{0}", nodeList[i].GetNodePoint());
+                Console.WriteLine("{0} : {1}",i, nodeList[i].GetNodePoint());
             }
+            
             Console.WriteLine();
         }
+
+        // ComboBox 노드 추가될 때 마다 내용추가.
+        public void ComboBoxRefresh()
+        {
+            String drawNodeValue = Convert.ToString(nodeNum);
+            startBox.Items.Add(drawNodeValue);
+            destBox.Items.Add(drawNodeValue);
+        }
+ 
     }
 }
 
