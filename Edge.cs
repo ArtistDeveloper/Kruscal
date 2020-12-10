@@ -25,9 +25,17 @@ namespace AlgoSub2
         public void DrawEdge()
         {
             Pen p = new Pen(Color.Black, 2);
-            EdgeGraphic.DrawLine(p, fromNode.GetNodePoint(), toNode.GetNodePoint());
+            int x1, x2, y1, y2;
+            x1 = fromNode.GetNodePoint().X;
+            y1 = fromNode.GetNodePoint().Y;
+            x2 = toNode.GetNodePoint().X;
+            y2 = toNode.GetNodePoint().Y;
+
+            //EdgeGraphic.DrawLine(p, fromNode.GetNodePoint(), toNode.GetNodePoint());
+            EdgeGraphic.DrawLine(p, x1+25, y1+25, x2+25, y2+25);
         }
 
 
     }
 }
+

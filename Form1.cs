@@ -13,7 +13,7 @@ namespace AlgoSub2
 {
     public partial class Form1 : Form
     {
-        int flag;
+        //int flag = 0;
         int toNodeSelect;
         int fromNodeSelect;
         int nodeNum = 0;
@@ -34,7 +34,6 @@ namespace AlgoSub2
         private void StartBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             fromNodeSelect = startBox.SelectedIndex;
-            //flag = 1;
         }
 
         //Dest에서 Edge를 생성하기. StartBox에서는 단순히 선택한 노드만 저장하기.
@@ -44,7 +43,6 @@ namespace AlgoSub2
             Edge edge = new Edge(nodeList[fromNodeSelect], nodeList[toNodeSelect], CreateGraphics());
             edgeList.Add(edge);
             edge.DrawEdge();
-            //flag = 0;
         }
 
         public Point GetNodePoint()
