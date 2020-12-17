@@ -31,38 +31,64 @@ namespace AlgoSub2
         {
             this.startBox = new System.Windows.Forms.ComboBox();
             this.destBox = new System.Windows.Forms.ComboBox();
+            this.WeightInputButton = new System.Windows.Forms.Button();
+            this.WeightInputBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // startBox
             // 
+            this.startBox.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.startBox.FormattingEnabled = true;
             this.startBox.Location = new System.Drawing.Point(397, 23);
             this.startBox.Name = "startBox";
-            this.startBox.Size = new System.Drawing.Size(121, 20);
+            this.startBox.Size = new System.Drawing.Size(121, 27);
             this.startBox.TabIndex = 0;
             this.startBox.SelectedIndexChanged += new System.EventHandler(this.StartBox_SelectedIndexChanged);
             // 
             // destBox
             // 
+            this.destBox.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.destBox.FormattingEnabled = true;
             this.destBox.Location = new System.Drawing.Point(565, 23);
             this.destBox.Name = "destBox";
-            this.destBox.Size = new System.Drawing.Size(121, 20);
+            this.destBox.Size = new System.Drawing.Size(121, 27);
             this.destBox.TabIndex = 1;
             this.destBox.SelectedIndexChanged += new System.EventHandler(this.DestBox_SelectedIndexChanged);
+            // 
+            // WeightInputButton
+            // 
+            this.WeightInputButton.Location = new System.Drawing.Point(847, 20);
+            this.WeightInputButton.Name = "WeightInputButton";
+            this.WeightInputButton.Size = new System.Drawing.Size(75, 23);
+            this.WeightInputButton.TabIndex = 2;
+            this.WeightInputButton.Text = "입력";
+            this.WeightInputButton.UseVisualStyleBackColor = true;
+            this.WeightInputButton.Click += new System.EventHandler(this.WeightInputBox_Button);
+            // 
+            // WeightInputBox
+            // 
+            this.WeightInputBox.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.WeightInputBox.Location = new System.Drawing.Point(717, 22);
+            this.WeightInputBox.Name = "WeightInputBox";
+            this.WeightInputBox.Size = new System.Drawing.Size(100, 29);
+            this.WeightInputBox.TabIndex = 3;
+            this.WeightInputBox.TextChanged += new System.EventHandler(this.WeightInput);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1245, 695);
+            this.ClientSize = new System.Drawing.Size(1484, 961);
+            this.Controls.Add(this.WeightInputBox);
+            this.Controls.Add(this.WeightInputButton);
             this.Controls.Add(this.destBox);
             this.Controls.Add(this.startBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "n";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.BgClick);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -70,6 +96,8 @@ namespace AlgoSub2
 
         private System.Windows.Forms.ComboBox startBox;
         private System.Windows.Forms.ComboBox destBox;
+        private System.Windows.Forms.Button WeightInputButton;
+        private System.Windows.Forms.TextBox WeightInputBox;
     }
 }
 
