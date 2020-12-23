@@ -28,38 +28,38 @@ namespace AlgoSub2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Panel panel1 = new Panel();
-            Panel panel2 = new Panel();
-            Label label1 = new Label();
-            Label label2 = new Label();
+            Panel primPanel = new Panel();
+            Panel kruPanel = new Panel();
+            Label primlabel = new Label();
+            Label kruLabel = new Label();
 
             // Initialize the Panel control.
-            panel1.Location = new Point(0, 650);
-            panel1.Size = new Size(750, 350);
+            primPanel.Location = new Point(0, 650);
+            primPanel.Size = new Size(750, 350);
 
-            panel2.Location = new Point(750, 650);
-            panel2.Size = new Size(750, 350);
+            kruPanel.Location = new Point(750, 650);
+            kruPanel.Size = new Size(750, 350);
 
             // Set the Borderstyle for the Panel to three-dimensional.
-            panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            primPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            kruPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
             // Initialize the Label and TextBox controls.
-            label1.Location = new Point(0, 0);
-            label1.Text = "Prim";
-            label1.Size = new Size(104, 16);
+            primlabel.Location = new Point(0, 0);
+            primlabel.Text = "Prim";
+            primlabel.Size = new Size(104, 16);
 
-            label2.Location = new Point(0, 0);
-            label2.Text = "Kruscal";
-            label2.Size = new Size(104, 16);
+            kruLabel.Location = new Point(0, 0);
+            kruLabel.Text = "Kruscal";
+            kruLabel.Size = new Size(104, 16);
 
             // Add the Panel control to the form.
-            this.Controls.Add(panel1);
-            this.Controls.Add(panel2);
+            //this.Controls.Add(primPanel);
+            //this.Controls.Add(kruPanel);
 
             // Add the Label and TextBox controls to the Panel.
-            panel1.Controls.Add(label1);
-            panel2.Controls.Add(label2);
+            primPanel.Controls.Add(primlabel);
+            kruPanel.Controls.Add(kruLabel);
         }
 
         /// <summary>
@@ -136,6 +136,8 @@ namespace AlgoSub2
             {
                 Console.WriteLine("{0} : {1}",i, nodeList[i].GetNodePoint());
             }
+
+
             
             Console.WriteLine();
         }
@@ -153,6 +155,126 @@ namespace AlgoSub2
         private void WeightInput(object sender, EventArgs e)
         {
 
+        }
+
+        //크루스칼 영역
+        public void kruscal() //Panel krupanel
+        {
+            List<Edge> sortedEdgeList = edgeList.OrderBy(x => x.weight).ToList();
+            List<Edge> kruscalEdgeList = new List<Edge>();
+            int nodeListSize = nodeList.Count;
+
+            // 각 정점이 포함된 그래프가 어디인지 저장.
+            int[] set = new int[nodeListSize];
+            for (int i = 0; i < nodeListSize; i++)
+            {
+                set[i] = i;
+            }
+
+            int edgeListSize = edgeList.Count;
+            int sum = 0;
+            for (int i = 0; i < edgeListSize; i++)
+            {
+                //노드2개 ,간선 1개 이어졌는데 간선2번째꺼를 찾으니까 어레이 초과가 일어나지.for문 수정하자.
+                if (!find(set, sortedEdgeList[i].fromNode.nodeNum, sortedEdgeList[i].toNode.nodeNum))
+                {
+                    sum += sortedEdgeList[i].weight;
+                    unionParent(set, sortedEdgeList[i].fromNode.nodeNum, sortedEdgeList[i].toNode.nodeNum);
+                    kruscalEdgeList.Add(sortedEdgeList[i]);
+                }
+            }
+            
+
+            Console.WriteLine(sum);
+            Graphics g = CreateGraphics();
+            g.Clear(BackColor);
+
+            for (int i = 0; i < kruscalEdgeList.Count; i++)
+            {
+                kruscalEdgeList[i].DrawEdge();
+            }
+
+            for (int i = 0; i < nodeList.Count; i++)
+            {
+                nodeList[i].DrawNode();
+            }
+        }
+
+        public int getParent(int[] set, int x)
+        {
+            if (set[x] == x) return x;
+            return set[x] = getParent(set, set[x]);
+        }
+
+        public void unionParent(int[] set, int a, int b)
+        {
+            a = getParent(set, a);
+            b = getParent(set, b);
+
+            if (a < b) set[b] = a;
+            else set[a] = b;
+        }
+
+        public bool find(int[] set, int a, int b)
+        {
+            a = getParent(set, a);
+            b = getParent(set, b);
+            if (a == b) return true;
+            else return false;
+        }
+
+        private void kruButton_Click(object sender, EventArgs e)
+        {
+            kruscal();
+        }
+        
+
+        //------------------------------------------
+        private void kruMiddleButton_Click(object sender, EventArgs e)
+        {
+            kruscalMiddle();
+        }
+
+        public void kruscalMiddle() //Panel krupanel
+        {
+            List<Edge> sortedEdgeList = edgeList.OrderBy(x => x.weight).ToList();
+            List<Edge> kruscalEdgeList = new List<Edge>();
+            int nodeListSize = nodeList.Count;
+
+            // 각 정점이 포함된 그래프가 어디인지 저장.
+            int[] set = new int[nodeListSize];
+            for (int i = 0; i < nodeListSize; i++)
+            {
+                set[i] = i;
+            }
+
+            int edgeListSize = edgeList.Count;
+            int sum = 0;
+            for (int i = 0; i < edgeListSize; i++)
+            {
+                //노드2개 ,간선 1개 이어졌는데 간선2번째꺼를 찾으니까 어레이 초과가 일어나지.for문 수정하자.
+                if (!find(set, sortedEdgeList[i].fromNode.nodeNum, sortedEdgeList[i].toNode.nodeNum))
+                {
+                    sum += sortedEdgeList[i].weight;
+                    unionParent(set, sortedEdgeList[i].fromNode.nodeNum, sortedEdgeList[i].toNode.nodeNum);
+                    kruscalEdgeList.Add(sortedEdgeList[i]);
+                }
+            }
+
+
+            Console.WriteLine(sum);
+            Graphics g = CreateGraphics();
+            g.Clear(BackColor);
+
+            for (int i = 0; i < kruscalEdgeList.Count / 2; i++)
+            {
+                kruscalEdgeList[i].DrawEdge();
+            }
+
+            for (int i = 0; i < nodeList.Count; i++)
+            {
+                nodeList[i].DrawNode();
+            }
         }
     }
 }

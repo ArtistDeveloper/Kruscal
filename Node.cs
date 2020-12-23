@@ -10,7 +10,7 @@ namespace AlgoSub2
 {
     class Node
     {
-        int nodeNum; //객체가 가지고 있는 각자의 노드 값.
+        public int nodeNum; //객체가 가지고 있는 각자의 노드 값.
         private Point nodePoint;
         Graphics nodeGraphic;
 
@@ -24,6 +24,15 @@ namespace AlgoSub2
         public Point GetNodePoint()
         {
             return this.nodePoint;
+        }
+
+        public void SetNodePointX(int x)
+        {
+            Point point = new Point();
+            point.X += x;
+            point.Y = this.nodePoint.Y;
+
+            this.nodePoint = point;
         }
 
         public void DrawNode()

@@ -9,9 +9,9 @@ namespace AlgoSub2
 {
     class Edge
     {
-        Node fromNode;
-        Node toNode;
-        int weight;
+        public Node fromNode;
+        public Node toNode;
+        public int weight { get; set; }
         Graphics EdgeGraphic;
 
         public Edge(Node fromNode, Node toNode, Graphics EdgeGraphic, int weight)

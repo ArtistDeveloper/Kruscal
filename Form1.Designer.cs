@@ -33,6 +33,8 @@ namespace AlgoSub2
             this.destBox = new System.Windows.Forms.ComboBox();
             this.WeightInputButton = new System.Windows.Forms.Button();
             this.WeightInputBox = new System.Windows.Forms.TextBox();
+            this.kruButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startBox
@@ -74,11 +76,33 @@ namespace AlgoSub2
             this.WeightInputBox.TabIndex = 3;
             this.WeightInputBox.TextChanged += new System.EventHandler(this.WeightInput);
             // 
+            // kruButton
+            // 
+            this.kruButton.Location = new System.Drawing.Point(953, 20);
+            this.kruButton.Name = "kruButton";
+            this.kruButton.Size = new System.Drawing.Size(75, 23);
+            this.kruButton.TabIndex = 4;
+            this.kruButton.Text = "크루스칼";
+            this.kruButton.UseVisualStyleBackColor = true;
+            this.kruButton.Click += new System.EventHandler(this.kruButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1050, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "크루스칼 중간";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.kruMiddleButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 961);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.kruButton);
             this.Controls.Add(this.WeightInputBox);
             this.Controls.Add(this.WeightInputButton);
             this.Controls.Add(this.destBox);
@@ -98,6 +122,8 @@ namespace AlgoSub2
         private System.Windows.Forms.ComboBox destBox;
         private System.Windows.Forms.Button WeightInputButton;
         private System.Windows.Forms.TextBox WeightInputBox;
+        private System.Windows.Forms.Button kruButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 
