@@ -252,7 +252,6 @@ namespace AlgoSub2
             int sum = 0;
             for (int i = 0; i < edgeListSize; i++)
             {
-                //노드2개 ,간선 1개 이어졌는데 간선2번째꺼를 찾으니까 어레이 초과가 일어나지.for문 수정하자.
                 if (!find(set, sortedEdgeList[i].fromNode.nodeNum, sortedEdgeList[i].toNode.nodeNum))
                 {
                     sum += sortedEdgeList[i].weight;
